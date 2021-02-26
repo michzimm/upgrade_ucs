@@ -26,9 +26,11 @@ with open('metadata') as f:
 
 metadata = json.loads(data)
 
-ssh_ip = metadata.ssh_ip
-ssh_user = metadata.ssh_user
-ssh_password = metadata.ssh_password
+print (metadata)
+
+ssh_ip = metadata["ssh_ip"]
+ssh_user = metadata["ssh_user"]
+ssh_password = metadata["ssh_password"]
 
 ####### Functions
 
