@@ -6,6 +6,7 @@ import getpass
 import paramiko
 import re
 import time
+import json
 from ucsmsdk.ucshandle import UcsHandle
 from ucsmsdk.mometa.firmware.FirmwareDownloader import FirmwareDownloader
 from ucsmsdk.mometa.firmware.FirmwareInfraPack import FirmwareInfraPack
@@ -18,11 +19,16 @@ from progress.spinner import Spinner
 from colorama import Fore, Back, Style
 from http.client import RemoteDisconnected
 
-####### Constants
+####### Import Metadata
 
-ssh_ip = "10.1.8.3"
-ssh_user = "root"
-ssh_password = "hx@Cisco123!"
+with open('metadata') as f:
+    data = f.read()
+
+metadata = json.loads(data)
+
+ssh_ip = metadata.ssh_ip
+ssh_user = metadata.ssh_user
+ssh_password = metadata.ssh_password
 
 ####### Functions
 
